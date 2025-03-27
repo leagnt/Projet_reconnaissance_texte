@@ -7,6 +7,9 @@ class image():
     def __init__(self):
         return None
 
+
+    #arg: path vers l'image
+    #return un reshape de l'image grisée en 100,100
     def ouvrir_images(self,path):#Chemin de l'image en entrée,renvoie une liste 2 dim de valeur entre 0 et 255
         image = Image.open(path)
         image = image.resize((1000, 1000))
@@ -18,6 +21,8 @@ class image():
         print(image_array.shape)
         return image_array
 
+    #arg: matrice de l'image
+    #return une image sans ombre
 
     def griser_image(self,imagepath):
         image = Image.open(imagepath)
