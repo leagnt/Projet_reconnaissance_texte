@@ -1,13 +1,23 @@
+import random
+from PIL import Image,ImageEnhance
 import numpy as np
 
-from PIL import Image, ImageEnhance
 class image():
 
     def __init__(self):
         return None
 
-    def ouvrir_fenetre(self):
-        return None
+    def ouvrir_images(self):#Renvoie la liste d'une image
+        image = Image.open("./images/test.png")
+        image = image.resize((1000, 1000))
+        image = image.convert("L")  # Convertir en niveaux de gris
+        image_array = np.asarray(image).flatten()
+        image.show()
+        image_array=255-image_array
+        image_array=image_array.reshape(1000,1000)
+        print(image_array.shape)
+        return image_array
+
 
     def enlever_ombre(self,image,imagepath):
         enhancer = ImageEnhance.Brightness(image)
@@ -26,3 +36,9 @@ class image():
         borne_sup=1.1*moyenne_pixel_image
         nouvelle_matrice=255*np.where[]
 
+
+
+A=image()
+test=A.ouvrir_images()
+
+print(test)
