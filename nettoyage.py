@@ -76,6 +76,6 @@ class image():
         return [ligne[gauche:droite + 1] for ligne in self.matrice[haut:bas + 1]]
 
 
-chemin="./images/test.png"
-A=image()
-test=A.ouvrir_images(chemin)
+chemin = "./images/test.png"
+A = image()
+test = A.ouvrir_images(chemin)
