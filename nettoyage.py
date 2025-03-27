@@ -9,6 +9,7 @@ class image():
         return None
 
     def enlever_ombre(self,image,imagepath):
+        ##
         enhancer = ImageEnhance.Brightness(image)
         image_eclairee = enhancer.enhance(1.5)
         image_eclairee.show()
