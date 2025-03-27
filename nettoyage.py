@@ -10,12 +10,12 @@ class image():
 
     #arg: path vers l'image
     #return un reshape de l'image grisée en 100,100
-    def ouvrir_images(self,path):#Chemin de l'image en entrée,renvoie une liste 2 dim de valeur entre 0 et 255
+    def ouvrir_images(self,path):
         image = Image.open(path)
         image = image.resize((1000, 1000))
-        image = image.convert("L")  # Convertir en niveaux de gris
+        image = image.convert("L")
         image_array = np.asarray(image).flatten()
-        image_array=255-image_array #O pour le blanc et 255 pour le noir
+        image_array=255-image_array
 
         image_array=image_array.reshape(1000,1000)
         return image_array
@@ -23,7 +23,6 @@ class image():
     #arg: matrice de l'image
     #return une image sans ombre
     def enlever_ombre(self,matrice_image):
-        ## prend en argument l'ilmage sous la forme d'une matrice et revoie une image de pixels noirs ou blancs blanc=0 et noir=255
         moyenne_pixel_image=np.mean(matrice_image)
         borne_sup=1.1*moyenne_pixel_image
         nouvelle_matrice=255*np.where[]
