@@ -1,5 +1,5 @@
 import random
-from PIL import Image
+from PIL import Image,ImageEnhance
 import numpy as np
 
 class image():
@@ -14,6 +14,8 @@ class image():
         image_array = np.asarray(image).flatten()
         image.show()
         image_array=255-image_array
+        image_array=image_array.reshape(1000,1000)
+        print(image_array.shape)
         return image_array
 
 
