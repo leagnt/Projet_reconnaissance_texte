@@ -60,7 +60,7 @@ class image():
 
         #reassemblage matrice
         #extraction des matrices pour chaque ligne
-        ligne_1=liste_sous_matrices[:2]
+        ligne_1=liste_sous_matrices[:3]
         ligne_2=liste_sous_matrices[3:6]
         ligne_3 = liste_sous_matrices[6:]
 
