@@ -1,5 +1,5 @@
 import random
-from PIL import Image,ImageEnhance
+from PIL import Image
 import numpy as np
 
 class image():
