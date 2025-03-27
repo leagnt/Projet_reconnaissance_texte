@@ -12,8 +12,8 @@ class image():
         image = image.resize((1000, 1000))
         image = image.convert("L")  # Convertir en niveaux de gris
         image_array = np.asarray(image).flatten()
-        image.show()
-        image_array=255-image_array
+        image_array=255-image_array #O pour le blanc et 255 pour le noir
+
         image_array=image_array.reshape(1000,1000)
         print(image_array.shape)
         return image_array
