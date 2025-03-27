@@ -1,6 +1,4 @@
 import random
-from PIL import Image,ImageEnhance
-import numpy as np
 
 class image():
 
@@ -38,7 +36,52 @@ class image():
 
 
 
-A=image()
-test=A.ouvrir_images()
+    def rogner_image(self):
+        lignes = len(self.matrice)
+        colonnes = len(self.matrice[0]) if lignes > 0 else 0
 
-print(test)
+        haut, bas = 0, lignes - 1
+        while haut < lignes:
+            for pixel in self.matrice[haut]:
+                if pixel != 0:
+                    break
+            else:
+                haut += 1
+                continue
+            break
+
+        while bas >= 0:
+            for pixel in self.matrice[bas]:
+                if pixel != 0:
+                    break
+            else:
+                bas -= 1
+                continue
+            break
+
+        # Trouver la première et la dernière colonne contenant des pixels non nuls
+        gauche, droite = 0, colonnes - 1
+        while gauche < colonnes:
+            for i in range(lignes):
+                if self.matrice[i][gauche] != 0:
+                    break
+            else:
+                gauche += 1
+                continue
+            break
+
+        while droite >= 0:
+            for i in range(lignes):
+                if self.matrice[i][droite] != 0:
+                    break
+            else:
+                droite -= 1
+                continue
+            break
+
+        # Vérifier qu'on a trouvé au moins un pixel non nul
+        if bas < haut or droite < gauche:
+            return []  # Retourne une image vide si aucun pixel trouvé
+
+        # Rogner l'image pour ne garder que la zone utile
+        return [ligne[gauche:droite + 1] for ligne in self.matrice[haut:bas + 1]]
