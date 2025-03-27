@@ -1,5 +1,4 @@
 import numpy as np
-import cv2
 
 class Normaliser: #Normalise les image obtenu apres le découpage en liste applati de 784 pixels
     def __init__(self, images_lettres, dim=(28, 28)): #prend en entree un ensemble de matrices carees
