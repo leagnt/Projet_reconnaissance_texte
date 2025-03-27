@@ -10,20 +10,20 @@ class image():
 
     #arg: path vers l'image
     #return un reshape de l'image grisée en 100,100
-    def ouvrir_images(self,path):#Chemin de l'image en entrée,renvoie une liste 2 dim de valeur entre 0 et 255
+    def ouvrir_images(self,path):
         image = Image.open(path)
         image = image.resize((1000, 1000))
         image = image.convert("L")  # Convertir en niveaux de gris
         image_array = np.asarray(image).flatten()
-        image_array=255-image_array #O pour le blanc et 255 pour le noir
+        image_array=255-image_array
 
         image_array=image_array.reshape(1000,1000)
+        print(image_array.shape)
         return image_array
 
     #arg: matrice de l'image
     #return une image sans ombre
     def enlever_ombre(self,matrice_image):
-        ## prend en argument l'ilmage sous la forme d'une matrice et revoie une image de pixels noirs ou blancs blanc=0 et noir=255
         moyenne_pixel_image=np.mean(matrice_image)
         borne_sup=1.1*moyenne_pixel_image
         nouvelle_matrice=255*np.where[]
@@ -76,10 +76,17 @@ class image():
         if bas < haut or droite < gauche:
             return []  # Retourne une image vide si aucun pixel trouvé
 
-        # Rogner l'image pour ne garder que la zone utile
-        return [ligne[gauche:droite + 1] for ligne in self.matrice[haut:bas + 1]]
+    def enlever_ombre(self,image,imagepath):
+        enhancer = ImageEnhance.Brightness(image)
+        image_eclairee = enhancer.enhance(1.5)
+        image_eclairee.show()
+        image_eclairee.save(imagepath)
+    def griser_image(self,imagepath):
+        image = Image.open(imagepath)
+        image_grise = image.convert("L")
+        pixels = list(image_grise.getdata())
 
+A=image()
+test=A.ouvrir_images()
 
-chemin = "./images/test.png"
-A = image()
-test = A.ouvrir_images(chemin)
+print(test)
