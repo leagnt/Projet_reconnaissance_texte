@@ -34,7 +34,7 @@ class image():
         # prend en argument l'image sous la forme d'une matrice et revoie une image sous la forme d'une matrice de pixels noirs ou blancs
         # blanc=0 et noir=255
         #Principe : on sépare l'image en 9 régions, on calcule la moyenne de la couleur de chacune des régions et on applique un filtre
-
+        liste_matrices=np.array()
         dim=np.shape(matrice_image)
         ligne=dim[0]//3
         colonne=dim[1]//3
@@ -51,6 +51,7 @@ class image():
                 moyenne_pixel = np.mean(sous_matrice)
                 borne_sup = 1.1 * moyenne_pixel
                 borne_sup = 0.9 * moyenne_pixel
+
 
 
 
