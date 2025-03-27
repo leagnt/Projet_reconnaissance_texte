@@ -1,3 +1,8 @@
+import numpy as np
+import pandas as pd
+
 class normaliser:
-    def normal(self):
-        return None
+    def __init__(self, image_lettre, dim=(28, 28)):
+        image_normal = image_lettre.np.reshape(dim)
+
+        return image_normal
