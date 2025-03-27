@@ -8,7 +8,7 @@ class image():
         return None
 
     def ouvrir_images(self,path):#Chemin de l'image en entrée,renvoie une liste 2 dim de valeur entre 0 et 255
-        image = Image.open("./images/test.png")
+        image = Image.open(path)
         image = image.resize((1000, 1000))
         image = image.convert("L")  # Convertir en niveaux de gris
         image_array = np.asarray(image).flatten()
