@@ -1,7 +1,9 @@
+
 class scanner:
-    def __init__(self):
-        self.base = [[1,1,1],[1,1,1],[0,1,0],[1,0,1],[1,1,1],[0,0,0]
-                     ]
+
+    def __init__(self,base):
+
+        self.base = base
         self.liste_hauteur = []
         self.matrice_image = [[]]
 
@@ -47,11 +49,6 @@ class scanner:
         return True
 
 
-
-
-
-
-
     def ligne_blanche(self, indice):
         # pour un indice de ligne, renvoie vrai si toutes les pixels de cette ligne sont blancs, faux sinon
         for i in range(len(self.base[0])):
@@ -67,6 +64,8 @@ class scanner:
                  return False
         return True
 
+test = [[1,1,1],[1,1,1],[0,1,0],[1,0,1],[1,1,1],[0,0,0]
+                     ]
 
-scanner = scanner()
+scanner = scanner(test)
 scanner.hauteur_ligne()
