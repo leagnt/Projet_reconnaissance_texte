@@ -7,10 +7,10 @@ class Normaliser: #Normalise les image obtenu apres le découpage en liste appla
 
         # Traiter chaque image dans la liste
         for image_lettre in images_lettres:
-            image_normal = self.carre(image_lettre)
-            image_normal = self.resize(image_lettre, dim)
-            image_normal = image_normal / 255.0
-            image_normal = image_normal.reshape(-1)
+            image_normal = self.carre(image_lettre)  # Applique la transformation pour rendre l'image carrée
+            image_normal = self.resize(image_normal, dim)  # Applique ensuite le redimensionnement sur l'image carrée
+            image_normal = image_normal / 255.0  # Normaliser l'image
+            image_normal = image_normal.reshape(-1)  # Aplatir l'image en une liste de 784 pixels
             self.images_normal.append(image_normal)
 
     def resize(self, image_lettre, dim): #redim l'image en 28,28 et renvoie une matrice
