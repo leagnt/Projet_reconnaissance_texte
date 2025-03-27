@@ -34,10 +34,32 @@ class image():
 
 
     def enlever_ombre(self,matrice_image):
-        ## prend en argument l'ilmage sous la forme d'une matrice et revoie une image de pixels noirs ou blancs blanc=0 et noir=255
-        moyenne_pixel_image=np.mean(matrice_image)
-        borne_sup=1.1*moyenne_pixel_image
-        nouvelle_matrice=255*np.where[]
+        # prend en argument l'image sous la forme d'une matrice et revoie une image sous la forme d'une matrice de pixels noirs ou blancs
+        # blanc=0 et noir=255
+        #Principe : on sépare l'image en 9 régions, on calcule la moyenne de la couleur de chacune des régions et on applique un filtre
+
+        dim=np.shape(matrice_image)
+        ligne=dim[0]//3
+        colonne=dim[1]//3
+        for i in range(3):
+            for j in range(3):
+                if i==2 and j==2:
+                    sous_matrice = matrice_image[i * ligne : , j*colonne :]
+                elif i==2 and j!=2:
+                    sous_matrice = matrice_image[i * ligne : , j * colonne:(j + 1) * colonne]
+                elif i!=2 and j==2:
+                    sous_matrice = matrice_image[i * ligne : (i + 1) * ligne, j * colonne :]
+                else:
+                    sous_matrice = matrice_image[i * ligne : (i + 1) * ligne, j * colonne : (j + 1) * colonne]
+                moyenne_pixel = np.mean(sous_matrice)
+                borne_sup = 1.1 * moyenne_pixel
+                borne_sup = 0.9 * moyenne_pixel
+
+
+
+
+
+
 
 
 
