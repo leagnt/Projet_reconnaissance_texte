@@ -64,9 +64,6 @@ class scanner:
         return True
 
 
-
-
-
     def ligne_blanche(self, indice):
         # pour un indice de ligne, renvoie vrai si toutes les pixels de cette ligne sont blancs, faux sinon
         for i in range(len(self.base[0])):
