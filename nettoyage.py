@@ -61,17 +61,36 @@ class image():
 
         #reassemblage matrice
         #extraction des matrices pour chaque ligne
-        ligne_1=liste_sous_matrices[:3]
-        ligne_2=liste_sous_matrices[3:6]
-        ligne_3 = liste_sous_matrices[6:]
+        ligne_1=[liste_sous_matrices[0],liste_sous_matrices[3],liste_sous_matrices[6]]
+        ligne_2=[liste_sous_matrices[1],liste_sous_matrices[4],liste_sous_matrices[7]]
+        ligne_3 =[liste_sous_matrices[2],liste_sous_matrices[5],liste_sous_matrices[8]]
 
         #concaténation du tout
-        ligne_1=np.concatenate(ligne_1,axis=1)
-        ligne_2=np.concatenate(ligne_2, axis=1)
-        ligne_3=np.concatenate(ligne_3, axis=1)
-        matrice_image=np.concatenate((ligne_1,ligne_2,ligne_3),axis=0)
+        ligne_1=np.concatenate(ligne_1,axis=0)
+        ligne_2=np.concatenate(ligne_2, axis=0)
+        ligne_3=np.concatenate(ligne_3, axis=0)
+        matrice_image=np.concatenate((ligne_1,ligne_2,ligne_3),axis=1)
 
         return matrice_image
+
+    def enlever_ombre_deux(self,matrice_image):
+
+        # application du filtre
+        moyenne_pixel = np.mean(matrice_image)
+        borne_sup = 1.1 * moyenne_pixel
+        borne_inf = 0.9 * moyenne_pixel
+        dim_sous_mat = np.shape(matrice_image)
+
+        for ligne in range(dim_sous_mat[0]):
+            for colonne in range(dim_sous_mat[1]):
+                if matrice_image[ligne, colonne] > borne_sup:
+                    matrice_image[ligne, colonne] = 255
+                elif matrice_image[ligne, colonne] < borne_inf:
+                    matrice_image[ligne, colonne] = 0
+
+        return matrice_image
+
+
 
     def rogner_image(self,matrice):
         lignes = len(matrice)
