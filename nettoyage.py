@@ -24,7 +24,7 @@ class image():
     #arg: matrice de l'image
     #return une image sans ombre
     def enlever_ombre(self,matrice_image):
-        # prend en argument l'image sous la forme d'une matrice et revoie une image sous la forme d'une matrice de pixels noirs ou blancs
+        # prend en argument l'image sous la forme d'une matrice numpy et revoie une image sous la forme d'une matrice de pixels noirs ou blancs
         # blanc=0 et noir=255
         #Principe : on sépare l'image en 9 régions, on calcule la moyenne de la couleur de chacune des régions et on applique un filtre
         liste_sous_matrices=[]
