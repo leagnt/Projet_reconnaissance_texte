@@ -73,7 +73,7 @@ class image():
 
         return matrice_image
 
-    def enlever_ombre_deux(self,matrice_image, offset):
+    def enlever_ombre_deux(self,matrice_image, offset=0):
         ## prend en argument l'image sous la forme d'une matrice numpy et revoie une image sous la forme d'une matrice numpy de pixels noirs ou blancs
 
         # application du filtre
