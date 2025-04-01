@@ -71,7 +71,7 @@ class scanner:
         for i in range(len(liste)):
             self.trouve_lettre(ligne,i)
             ligne = ligne + liste[i]
-
+        return self.matrice_image
 
 
     def ligne_blanche(self, indice):
