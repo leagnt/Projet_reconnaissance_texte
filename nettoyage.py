@@ -89,14 +89,14 @@ class image():
 
         return matrice_image
 
-    def ombres_3(self,matrice_image,finesse):
+    def ombres_3(self,matrice_image,finesse=20):
         liste=[0 for i in range(finesse)]
         precision=1/finesse
         dim_mat = np.shape(matrice_image)
         for ligne in range(dim_mat[0]):
             for colonne in range(dim_mat[1]):
                 valeur_pixel=matrice_image[ligne,colonne]/255
-                rang=valeur_pixel//precision
+                rang=float(valeur_pixel)//precision
                 liste[rang]+=1
 
         minimums=[]
