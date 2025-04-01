@@ -1,13 +1,13 @@
 class scanner:
-    def __init__(self):
-        self.base = [[1,1,1],[1,1,0],[1,0,1],[1,1,0],[1,1,1],[0,0,0]]
+    def __init__(self,base):
+        self.base = base
         self.liste_hauteur = []
-        self.matrice_image = [[]]
+        self.matrice_image = []
 
     def hauteur_ligne(self):
         #renvoie une liste avec les hauteurs de chaque ligne
         i = 0
-        condition = True
+        condition = self.ligne_blanche(i)
         while i < len(self.base):
 
             taille_ligne = 0
@@ -20,19 +20,18 @@ class scanner:
             condition = self.inverse(condition)
 
 
-        print(self.liste_hauteur)
+        return self.liste_hauteur
 
 
-    def trouve_lettre(self):
+    def trouve_lettre(self,indice_ligne, indice_taille_ligne):
 
-        indice_ligne = 0
-        indice_taille_ligne = 1
+
         taille_ligne = self.liste_hauteur[indice_taille_ligne]
         print(taille_ligne)
 
 
         i = 0
-        condition = True
+        condition = self.colonne_blanche(i,indice_ligne,taille_ligne)
         print(len(self.base[0]),"f")
         while i < len(self.base[0]):
 
@@ -43,18 +42,18 @@ class scanner:
             while i < len(self.base[0]) and self.colonne_blanche(i,indice_ligne,taille_ligne) is condition:
                 print( self.colonne_blanche(i,indice_ligne,taille_ligne),"jfjjff")
                 i += 1
-
-
-
             sub_matrix = [row[indice:i] for row in self.base[indice_ligne:(indice_ligne+taille_ligne)]]
+            print(sub_matrix,"bbbbff")
 
+
+            print(taille_ligne,"fghjh",i)
             print(sub_matrix ,"hjrfjf",indice, i )
 
             self.matrice_image.append(sub_matrix )
 
             condition = self.inverse(condition)
-
-        print(self.matrice_image)
+        print(self.liste_hauteur)
+        #print(self.matrice_image)
 
 
 
@@ -62,6 +61,17 @@ class scanner:
         if condition is True:
             return False
         return True
+
+
+
+    def scanner(self):
+        liste =self.hauteur_ligne()
+        print(liste)
+        ligne = 0
+        for i in range(len(liste)):
+            self.trouve_lettre(ligne,i)
+            ligne = ligne + liste[i]
+        return self.matrice_image
 
 
     def ligne_blanche(self, indice):
@@ -80,6 +90,7 @@ class scanner:
         return False
 
 
-scanner = scanner()
-scanner.hauteur_ligne()
-scanner.trouve_lettre()
+test = [[1,1,1],[1,1,0],[0,0,0],[1,1,0],[1,1,1],[0,0,0]]
+scanner = scanner(test)
+
+print(scanner.scanner())

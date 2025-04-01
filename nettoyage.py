@@ -24,7 +24,7 @@ class image():
     #arg: matrice de l'image
     #return une image sans ombre
     def enlever_ombre(self,matrice_image):
-        # prend en argument l'image sous la forme d'une matrice et revoie une image sous la forme d'une matrice de pixels noirs ou blancs
+        # prend en argument l'image sous la forme d'une matrice numpy et revoie une image sous la forme d'une matrice de pixels noirs ou blancs
         # blanc=0 et noir=255
         #Principe : on sépare l'image en 9 régions, on calcule la moyenne de la couleur de chacune des régions et on applique un filtre
         liste_sous_matrices=[]
@@ -61,16 +61,57 @@ class image():
 
         #reassemblage matrice
         #extraction des matrices pour chaque ligne
-        ligne_1=liste_sous_matrices[:3]
-        ligne_2=liste_sous_matrices[3:6]
-        ligne_3 = liste_sous_matrices[6:]
+        ligne_1=[liste_sous_matrices[0],liste_sous_matrices[3],liste_sous_matrices[6]]
+        ligne_2=[liste_sous_matrices[1],liste_sous_matrices[4],liste_sous_matrices[7]]
+        ligne_3 =[liste_sous_matrices[2],liste_sous_matrices[5],liste_sous_matrices[8]]
 
         #concaténation du tout
-        ligne_1=np.concatenate(ligne_1,axis=1)
-        ligne_2=np.concatenate(ligne_2, axis=1)
-        ligne_3=np.concatenate(ligne_3, axis=1)
-        matrice_image=np.concatenate((ligne_1,ligne_2,ligne_3),axis=0)
+        ligne_1=np.concatenate(ligne_1,axis=0)
+        ligne_2=np.concatenate(ligne_2, axis=0)
+        ligne_3=np.concatenate(ligne_3, axis=0)
+        matrice_image=np.concatenate((ligne_1,ligne_2,ligne_3),axis=1)
 
+        return matrice_image
+
+    def enlever_ombre_deux(self,matrice_image, offset=0):
+        ## prend en argument l'image sous la forme d'une matrice numpy et revoie une image sous la forme d'une matrice numpy de pixels noirs ou blancs
+
+        # application du filtre
+        moyenne_pixel = np.mean(matrice_image)
+        dim_mat = np.shape(matrice_image)
+
+        for ligne in range(dim_mat[0]):
+            for colonne in range(dim_mat[1]):
+                if matrice_image[ligne, colonne] > (moyenne_pixel+offset):
+                    matrice_image[ligne, colonne] = 1
+                elif matrice_image[ligne, colonne] < (moyenne_pixel+offset):
+                    matrice_image[ligne, colonne] = 0
+
+        return matrice_image
+
+    def ombres_3(self,matrice_image,finesse=20):
+        liste=[0 for i in range(finesse)]
+        precision=1/finesse
+        dim_mat = np.shape(matrice_image)
+        for ligne in range(dim_mat[0]):
+            for colonne in range(dim_mat[1]):
+                valeur_pixel=matrice_image[ligne,colonne]/255
+                rang=float(valeur_pixel)//precision
+                liste[rang]+=1
+
+        minimums=[]
+        for i in range(1,len(liste)-1):
+            if liste[i]<liste[i+1] and liste[i]>liste[i-1]:
+                minimums.append(i)
+
+        seuil=minimums[0]*precision
+
+        for ligne in range(dim_mat[0]):
+            for colonne in range(dim_mat[1]):
+                if matrice_image[ligne, colonne] > seuil:
+                    matrice_image[ligne, colonne] = 1
+                elif matrice_image[ligne, colonne] < seuil:
+                    matrice_image[ligne, colonne] = 0
         return matrice_image
 
     def rogner_image(self,matrice):
