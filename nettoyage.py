@@ -73,13 +73,13 @@ class image():
 
         return matrice_image
 
-    def rogner_image(self):
-        lignes = len(self.matrice)
-        colonnes = len(self.matrice[0]) if lignes > 0 else 0
+    def rogner_image(self,matrice):
+        lignes = len(matrice)
+        colonnes = len(matrice[0]) if lignes > 0 else 0
 
         haut, bas = 0, lignes - 1
         while haut < lignes:
-            for pixel in self.matrice[haut]:
+            for pixel in matrice[haut]:
                 if pixel != 0:
                     break
             else:
@@ -88,7 +88,7 @@ class image():
             break
 
         while bas >= 0:
-            for pixel in self.matrice[bas]:
+            for pixel in matrice[bas]:
                 if pixel != 0:
                     break
             else:
@@ -100,7 +100,7 @@ class image():
         gauche, droite = 0, colonnes - 1
         while gauche < colonnes:
             for i in range(lignes):
-                if self.matrice[i][gauche] != 0:
+                if matrice[i][gauche] != 0:
                     break
             else:
                 gauche += 1
@@ -109,7 +109,7 @@ class image():
 
         while droite >= 0:
             for i in range(lignes):
-                if self.matrice[i][droite] != 0:
+                if matrice[i][droite] != 0:
                     break
             else:
                 droite -= 1
@@ -120,8 +120,10 @@ class image():
         if bas < haut or droite < gauche:
             return []  # Retourne une image vide si aucun pixel trouvé
 
+        return matrice[haut:bas + 1, gauche:droite + 1]
 
-A=image()
-test=A.ouvrir_images()
+if __name__ == "__main__" :
+    A=image()
+    test=A.ouvrir_images()
 
-print(test)
+    print(test)
