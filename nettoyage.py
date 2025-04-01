@@ -77,18 +77,16 @@ class image():
 
         # application du filtre
         moyenne_pixel = np.mean(matrice_image)
-        borne_sup = 1.1 * moyenne_pixel
-        borne_inf = 0.9 * moyenne_pixel
         dim_sous_mat = np.shape(matrice_image)
 
         for ligne in range(dim_sous_mat[0]):
             for colonne in range(dim_sous_mat[1]):
-                if matrice_image[ligne, colonne] > borne_sup:
-                    matrice_image[ligne, colonne] = 255
-                elif matrice_image[ligne, colonne] < borne_inf:
+                if matrice_image[ligne, colonne] > moyenne_pixel:
+                    matrice_image[ligne, colonne] = 1
+                elif matrice_image[ligne, colonne] < moyenne_pixel:
                     matrice_image[ligne, colonne] = 0
 
-        return matrice_image/255
+        return matrice_image
 
 
 
