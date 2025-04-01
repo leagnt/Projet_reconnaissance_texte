@@ -88,7 +88,7 @@ class image():
                 elif matrice_image[ligne, colonne] < borne_inf:
                     matrice_image[ligne, colonne] = 0
 
-        return matrice_image
+        return matrice_image/255
 
 
 
