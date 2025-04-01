@@ -65,15 +65,13 @@ class scanner:
 
 
     def scanner(self):
-
-
         liste =self.hauteur_ligne()
         print(liste)
         ligne = 0
         for i in range(len(liste)):
             self.trouve_lettre(ligne,i)
             ligne = ligne + liste[i]
-
+        return self.matrice_image
 
 
     def ligne_blanche(self, indice):
@@ -91,7 +89,8 @@ class scanner:
                  return True
         return False
 
-test = [[1,0,1],[1,1,0],[1,0,1],[1,1,0],[1,1,1],[0,0,0]]
+
+test = [[1,1,1],[1,1,0],[0,0,0],[1,1,0],[1,1,1],[0,0,0]]
 scanner = scanner(test)
 
 scanner.scanner()
