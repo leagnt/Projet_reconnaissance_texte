@@ -89,8 +89,9 @@ class scanner:
                  return True
         return False
 
+if __name__ == "__main__" :
 
-test = [[1,1,1],[1,1,0],[0,0,0],[1,1,0],[1,1,1],[0,0,0]]
-scanner = scanner(test)
+    test = [[1,1,1],[1,1,0],[0,0,0],[1,1,0],[1,1,1],[0,0,0]]
+    scanner = scanner(test)
 
-scanner.scanner()
+    scanner.scanner()
