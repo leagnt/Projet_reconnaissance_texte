@@ -47,3 +47,4 @@ print(im)
 im2=enlever_ombre_deux(im, 50)
 
 afficher_matrice(im2)
+#ok
