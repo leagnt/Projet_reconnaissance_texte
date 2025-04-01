@@ -45,14 +45,16 @@ def enlever_ombre_deux(self, matrice_image, offset):
     return matrice_image
 
 
-def ombres_3(self, matrice_image, finesse=20):
+def ombres_3(matrice_image, finesse=20):
     liste = [0 for i in range(finesse)]
     precision = 1 / finesse
     dim_mat = np.shape(matrice_image)
     for ligne in range(dim_mat[0]):
         for colonne in range(dim_mat[1]):
             valeur_pixel = matrice_image[ligne, colonne] / 255
-            rang = float(valeur_pixel) // precision
+            rang = int(float(valeur_pixel) // precision)
+            if valeur_pixel==1:
+                rang=finesse-1
             liste[rang] += 1
 
     minimums = []
@@ -71,7 +73,7 @@ def ombres_3(self, matrice_image, finesse=20):
                 matrice_image[ligne, colonne] = 0
     return matrice_image
 
-im=ouvrir_images("/Users/leagnt/Desktop/GitHub/Projet_reconnaissance_texte/images/test.png")
+im=ouvrir_images("images/test.png")
 print(im)
 im2=ombres_3(im, 30)
 
