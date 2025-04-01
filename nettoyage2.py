@@ -8,9 +8,6 @@ def afficher_matrice(matrice):
     Args:
         matrice (numpy.ndarray): Matrice 1000x1000 contenant des 0 et 1.
     """
-    if matrice.shape != (1000, 1000):
-        raise ValueError("La matrice doit être de taille 1000x1000")
-
     plt.imshow(1-matrice, cmap='gray', interpolation='nearest')
     plt.axis('off')  # Cache les axes pour une meilleure visualisation
     plt.show()
@@ -42,9 +39,3 @@ def enlever_ombre_deux(matrice_image, offset):
 
     return matrice_image
 
-im=ouvrir_images("/Users/leagnt/Desktop/GitHub/Projet_reconnaissance_texte/images/test.png")
-print(im)
-im2=enlever_ombre_deux(im, 50)
-
-afficher_matrice(im2)
-#ok

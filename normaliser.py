@@ -31,7 +31,7 @@ class Normaliser: #Normalise les image obtenu apres le découpage en liste appla
 
         return nouvelle_image #renvoie la liste de 784 pixels
 
-    def carre(self,image_lettre):  # Redimensionner l'image pour la rendre carrée en ajoutant des bordures blanches
+    def carre(self,image_lettre):# Redimensionner l'image pour la rendre carrée en ajoutant des bordures blanches
         h, l = image_lettre.shape
         size = max(h, l)  # La nouvelle taille carrée sera égale à la plus grande dimension
 
