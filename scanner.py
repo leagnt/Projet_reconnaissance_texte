@@ -53,7 +53,7 @@ class scanner:
 
             condition = self.inverse(condition)
         print(self.liste_hauteur)
-        #print(self.matrice_image)
+        print(self.matrice_image)
 
 
 
@@ -89,8 +89,9 @@ class scanner:
                  return True
         return False
 
+if __name__ == "__main__" :
 
-test = [[1,1,1],[1,1,0],[0,0,0],[1,1,0],[1,1,1],[0,0,0]]
-scanner = scanner(test)
+    test = [[1,1,1],[1,1,0],[0,0,0],[1,1,0],[1,1,1],[0,0,0]]
+    scanner = scanner(test)
 
-print(scanner.scanner())
+    scanner.scanner()
