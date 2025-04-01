@@ -73,7 +73,8 @@ class image():
 
         return matrice_image
 
-    def enlever_ombre_deux(self,matrice_image):
+    def enlever_ombre_deux(self,matrice_image, offset):
+        ## prend en argument l'image sous la forme d'une matrice numpy et revoie une image sous la forme d'une matrice numpy de pixels noirs ou blancs
 
         # application du filtre
         moyenne_pixel = np.mean(matrice_image)
@@ -81,9 +82,9 @@ class image():
 
         for ligne in range(dim_sous_mat[0]):
             for colonne in range(dim_sous_mat[1]):
-                if matrice_image[ligne, colonne] > moyenne_pixel:
+                if matrice_image[ligne, colonne] > (moyenne_pixel+offset):
                     matrice_image[ligne, colonne] = 1
-                elif matrice_image[ligne, colonne] < moyenne_pixel:
+                elif matrice_image[ligne, colonne] < (moyenne_pixel+offset):
                     matrice_image[ligne, colonne] = 0
 
         return matrice_image
