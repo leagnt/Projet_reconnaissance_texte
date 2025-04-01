@@ -59,6 +59,7 @@ class bdd(): #Utiliser la fonction sortie
 
 
     #renvoie les datasets sous formes: x_train,y_train,x_test,y_test
+    #Pour utiliser dans le résseau, il est important d'avoir les indices par raport à 0: faire -33 sur les labels
     def sortie(self):
 
         indices = np.arange(len(self.X))
