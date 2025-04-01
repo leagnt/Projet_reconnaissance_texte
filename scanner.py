@@ -2,7 +2,7 @@ class scanner:
     def __init__(self,base):
         self.base = base
         self.liste_hauteur = []
-        self.matrice_image = [[]]
+        self.matrice_image = []
 
     def hauteur_ligne(self):
         #renvoie une liste avec les hauteurs de chaque ligne
@@ -53,7 +53,7 @@ class scanner:
 
             condition = self.inverse(condition)
         print(self.liste_hauteur)
-        print(self.matrice_image)
+        #print(self.matrice_image)
 
 
 
@@ -93,4 +93,4 @@ class scanner:
 test = [[1,1,1],[1,1,0],[0,0,0],[1,1,0],[1,1,1],[0,0,0]]
 scanner = scanner(test)
 
-scanner.scanner()
+print(scanner.scanner())
