@@ -8,9 +8,6 @@ def afficher_matrice(matrice):
     Args:
         matrice (numpy.ndarray): Matrice 1000x1000 contenant des 0 et 1.
     """
-    if matrice.shape != (1000, 1000):
-        raise ValueError("La matrice doit être de taille 1000x1000")
-
     plt.imshow(1-matrice, cmap='gray', interpolation='nearest')
     plt.axis('off')  # Cache les axes pour une meilleure visualisation
     plt.show()
@@ -79,6 +76,3 @@ im=ouvrir_images("images/test.png")
 
 im2=ombres_3(im, 100)
 im3=enlever_ombre_deux(im)
-
-afficher_matrice(im2)
-#ok
