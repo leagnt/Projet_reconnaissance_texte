@@ -51,7 +51,7 @@ def ombres_3(matrice_image, finesse=100):
             finesse qui caractérise la finesse de l'analyse (ne doit pas dépasser 255)
         """
     #normalisation de la matrice image
-    matrice_image=matrice_image/255
+    matrice_image=1-(matrice_image/255)
 
     #calcul de la fréquence de cahcune des catégories de pixel
 
@@ -85,7 +85,7 @@ def ombres_3(matrice_image, finesse=100):
                 matrice_image[ligne, colonne] = 1
             elif matrice_image[ligne, colonne] < seuil:
                 matrice_image[ligne, colonne] = 0
-    return matrice_image
+    return 1-matrice_image
 
 im=ouvrir_images("images/test.png")
 
