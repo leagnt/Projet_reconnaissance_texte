@@ -118,30 +118,6 @@ class image():
                     matrice_image[ligne, colonne] = 0
         return matrice_image
 
-    def ombres_3(self,matrice_image,finesse=20):
-        liste=[0 for i in range(finesse)]
-        precision=1/finesse
-        dim_mat = np.shape(matrice_image)
-        for ligne in range(dim_mat[0]):
-            for colonne in range(dim_mat[1]):
-                valeur_pixel=matrice_image[ligne,colonne]/255
-                rang=float(valeur_pixel)//precision
-                liste[rang]+=1
-
-        minimums=[]
-        for i in range(1,len(liste)-1):
-            if liste[i]<liste[i+1] and liste[i]>liste[i-1]:
-                minimums.append(i)
-
-        seuil=minimums[0]*precision
-
-        for ligne in range(dim_mat[0]):
-            for colonne in range(dim_mat[1]):
-                if matrice_image[ligne, colonne] > seuil:
-                    matrice_image[ligne, colonne] = 1
-                elif matrice_image[ligne, colonne] < seuil:
-                    matrice_image[ligne, colonne] = 0
-        return matrice_image
 
     def rogner_image(self,matrice):
         lignes = len(matrice)
