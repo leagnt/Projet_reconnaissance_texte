@@ -1,6 +1,6 @@
 import os
 
-import cv2
+import cv2 #installer le package Opencv
 import numpy as np
 
 from os.path import join
