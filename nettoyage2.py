@@ -43,7 +43,18 @@ def enlever_ombre_deux( matrice_image, offset=0):
 
 
 def ombres_3(matrice_image, finesse=100):
+    """
+        Affiche une matrice nettoyée 1000x1000 composée de 0 et 1 en noir et blanc.
+
+        Args:
+            matrice_image (numpy.ndarray): Matrice contenant des pixels compris 0 (pixels balncs) et 255 (pixels noirs).
+            finesse qui caractérise la finesse de l'analyse (ne doit pas dépasser 255)
+        """
+    #normalisation de la matrice image
     matrice_image=matrice_image/255
+
+    #calcul de la fréquence de cahcune des catégories de pixel
+
     liste = [0 for i in range(finesse)]
     precision = 1 / finesse
     dim_mat = np.shape(matrice_image)
@@ -55,14 +66,18 @@ def ombres_3(matrice_image, finesse=100):
                 rang=finesse-1
             liste[rang] += 1
 
+    #identifiaction du dernier minimum
+
     minimums = []
-
-
     for i in range(1, len(liste) - 1):
         if liste[i] < liste[i + 1] and liste[i] > liste[i - 1]:
             minimums.append(i)
 
+    #calcul du seuil
+
     seuil = minimums[-1] * precision
+
+    #modification de la matrice
 
     for ligne in range(dim_mat[0]):
         for colonne in range(dim_mat[1]):
@@ -76,3 +91,6 @@ im=ouvrir_images("images/test.png")
 
 im2=ombres_3(im, 100)
 im3=enlever_ombre_deux(im)
+print(im2)
+
+afficher_matrice(im2)
