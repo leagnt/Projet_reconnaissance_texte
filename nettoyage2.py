@@ -66,7 +66,7 @@ def ombres_3(matrice_image, finesse=100):
                 rang=finesse-1
             liste[rang] += 1
 
-    #identifiaction du dernier minimum
+    #identifiaction de l'ensemble des minimums locaux
 
     minimums = []
     for i in range(1, len(liste) - 1):
