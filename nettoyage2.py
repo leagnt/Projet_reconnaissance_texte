@@ -44,7 +44,7 @@ def enlever_ombre_deux( matrice_image, offset=0):
 
 def ombres_3(matrice_image, finesse=100):
     """
-        Affiche une matrice nettoyée 1000x1000 composée de 0 et 1 en noir et blanc.
+        Affiche une matrice nettoyée 1000x1000 composée de 0 et 1 en blanc et noir.
 
         Args:
             matrice_image (numpy.ndarray): Matrice contenant des pixels compris 0 (pixels balncs) et 255 (pixels noirs).
