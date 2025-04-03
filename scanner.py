@@ -1,3 +1,7 @@
+
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
 class scanner:
     def __init__(self,base):
         self.base = base
@@ -27,33 +31,26 @@ class scanner:
 
 
         taille_ligne = self.liste_hauteur[indice_taille_ligne]
-        print(taille_ligne)
+
 
 
         i = 0
         condition = self.colonne_blanche(i,indice_ligne,taille_ligne)
-        print(len(self.base[0]),"f")
         while i < len(self.base[0]):
 
 
             indice = i
-            print(i)
+
 
             while i < len(self.base[0]) and self.colonne_blanche(i,indice_ligne,taille_ligne) is condition:
-                print( self.colonne_blanche(i,indice_ligne,taille_ligne),"jfjjff")
                 i += 1
             sub_matrix = [row[indice:i] for row in self.base[indice_ligne:(indice_ligne+taille_ligne)]]
-            print(sub_matrix,"bbbbff")
 
-
-            print(taille_ligne,"fghjh",i)
-            print(sub_matrix ,"hjrfjf",indice, i )
 
             self.matrice_image.append(sub_matrix )
 
             condition = self.inverse(condition)
-        print(self.liste_hauteur)
-        print(self.matrice_image)
+
 
 
 
@@ -71,7 +68,7 @@ class scanner:
         for i in range(len(liste)):
             self.trouve_lettre(ligne,i)
             ligne = ligne + liste[i]
-        return self.matrice_image
+        return self.matrice_image[0]
 
 
     def ligne_blanche(self, indice):
@@ -88,6 +85,20 @@ class scanner:
              if self.base[indice_ligne + (i) ][indice_colonne] == 0:
                  return True
         return False
+
+
+def afficher_matrice(matrice):
+    """
+    Affiche une matrice 1000x1000 composée de 0 et 1 en noir et blanc.
+
+    Args:
+        matrice (numpy.ndarray): Matrice 1000x1000 contenant des 0 et 1.
+    """
+    plt.imshow(1-matrice, cmap='gray', interpolation='nearest')
+    plt.axis('off')  # Cache les axes pour une meilleure visualisation
+    plt.show()
+
+
 
 if __name__ == "__main__" :
 
