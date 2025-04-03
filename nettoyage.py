@@ -73,7 +73,7 @@ class image():
 
         return matrice_image
 
-    def ombres_3(matrice_image, finesse=100):
+    def ombres_3(self,matrice_image, finesse=100):
         """
             Affiche une matrice nettoyée 1000x1000 composée de 0 et 1 en blanc et noir.
 
